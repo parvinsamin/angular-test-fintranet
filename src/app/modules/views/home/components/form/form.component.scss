@@ -1,0 +1,46 @@
+:host ::ng-deep .forms-grid>div {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+}
+
+:host ::ng-deep .forms-grid>div>div:first-child {
+    min-width: 10em;
+}
+
+input,
+textarea {
+    flex: 1 1 auto;
+    min-height: 40px;
+    max-width: 300px;
+}
+
+:host ::ng-deep .ui-message {
+    margin-left: 1em;
+}
+
+@media screen and (max-width: 64em) {
+    :host ::ng-deep .ui-message-text {
+        display: none;
+    }
+}
+
+:host ::ng-deep .p-dropdown {
+    width: 14rem;
+}
+
+.country-item-value {
+    img.flag {
+        width: 17px;
+    }
+}
+
+p-skeleton {
+    width: 100%;
+}
+::ng-deep{
+    .p-hidden-accessible input{
+        display:none !important;
+    }
+
+}

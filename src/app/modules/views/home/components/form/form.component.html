@@ -1,0 +1,49 @@
+<div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-md-4">
+        <p-toast></p-toast>
+
+        <form [formGroup]="testForm" (ngSubmit)="onSubmit(testForm.value)">
+            <p-panel header="Validate">
+                <div class="ui-fluid forms-grid" style="margin: 1em 0">
+                    <div>
+                        <div>Amount  *</div>
+                        <input pInputText type="text" formControlName="amount" placeholder="Required"/>
+                        <p-message severity="error" text="Amount is required" *ngIf="!testForm.controls['amount'].valid&&testForm.controls['amount'].dirty"></p-message>
+                        <p-message severity="error" 
+                        [text]="testForm.get('amount')?.hasError('required') ? 'Amount is required' : testForm.get('amount')?.hasError('pattern')  ? 'Value Must be Number' : ''" 
+                        *ngIf="!testForm.controls['amount'].valid&&testForm.controls['amount'].dirty"></p-message>
+                     </div>
+                    <div>
+                        <div>Date  *</div>
+                        <p-calendar formControlName="startDate" [minDate]="minDateValue" [maxDate]="maxDateValue" ></p-calendar>
+                        <p-message severity="error" text="Date is required" *ngIf="!testForm.controls['startDate'].valid&&testForm.controls['startDate'].dirty"></p-message>
+                     </div>
+                    <div>
+                        <div>Status  *</div> 
+                        <p-dropdown [options]="options" formControlName="statuses" optionLabel="label"  ></p-dropdown> 
+                        <p-message severity="error" text="Status is required" *ngIf="!testForm.controls['statuses'].valid&&testForm.controls['statuses'].dirty"></p-message>
+                     </div>
+                     
+                     <div>
+                        <div>Source Of Fund  *</div>
+                        <input pInputText type="text" formControlName="fund-src" placeholder="Required"/>
+                        <p-message severity="error" 
+                        [text]="testForm.get('fund-src')?.hasError('required') ? 'Fund Source is required' : testForm.get('amount')?.hasError('pattern')  ? 'Only Allow Alpha Characters' : ''" 
+                        *ngIf="!testForm.controls['fund-src'].valid&&testForm.controls['fund-src'].dirty"></p-message>  </div>
+                    <div>
+                        <button pButton type="submit" label="Submit" [disabled]="!testForm.valid"></button>
+                    </div>
+        
+                    <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+                        Form Submitted
+                        <br>
+                        {{diagnostic}}
+                    </div>
+                </div>
+            </p-panel>
+        </form>
+    </div>
+</div>
+<pre>
+    {{testForm.value|json}}
+</pre>
