@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PostState } from 'src/app/core/state/posts.state';
+import { PersonState, PostState, SrcState } from 'src/app/core/state/app.state';
 
 @Component({
   selector: 'app-summary',
@@ -9,15 +9,28 @@ import { PostState } from 'src/app/core/state/posts.state';
 })
 export class SummaryComponent implements OnInit {
 
-  constructor(private store: Store<PostState>) { }
-  storeData:any;
+  constructor(
+    private store: Store<PostState>,
+    private store1: Store<SrcState>,
+    private store2: Store<PersonState>
+  ) { }
+  storeData: any;
   ngOnInit(): void {
-    this.store.select('posts').subscribe(res => {
-      this.storeData = res[res.length-1];
-      console.log('store data:   ', this.storeData);
+    this.store.select('posts').subscribe(
+      developers => console.log(developers)
+    );
+
+    this.store1.select('src').subscribe(res => {
+      console.log('src store data:   ', res);
+      this.storeData = res;
+    });
+
+    this.store2.select('person').subscribe(res => {
+      console.log('person store data:   ', res);
+      this.storeData = res;
     })
+    
   }
 
 }
 
- 

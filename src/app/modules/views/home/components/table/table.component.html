@@ -1,41 +1,27 @@
 <p-card> 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Address</th>
-                </tr>
-            </thead>
-            <tbody cdkDropList (cdkDropListDropped)="onDrop($event)">
-                <tr *ngFor="let user of users" cdkDrag cdkDragLockAxis="y" (click)="addRowData(user)">
-                    <th class="col-xs">
-                        <div class="drag-handle">
-                            <ng-container [ngTemplateOutlet]="dragHandleTmpl">
-                            </ng-container>
-                            {{ user.order }}
-                        </div>
-                    </th>
-                    <td class="col-md">
-                        {{ user.first }}</td>
-                    <td class="col-md">{{ user.last }}
-                    </td>
-                    <td class="col-md">
-                        {{ user.email }}</td>
-                    <td class="col-md">
-                        {{ user.address }}</td>
-                </tr>
-            </tbody>
-        </table> 
-    <ng-template #dragHandleTmpl>
-        <svg class="bi bi-list handle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                d="M2.5 11.5A.5.5 0 013 11h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4A.5.5 0 013 7h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4A.5.5 0 013 3h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5z"
-                clip-rule="evenodd" />
-        </svg>
-    </ng-template>
+    <p-table [value]="users" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Address</th> 
+                <th>Action</th> 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-users>
+            <tr  [pSelectableRow]="users">
+                <td>{{users.order}}</td>
+                <td>{{users.first}}</td>
+                <td>{{users.last}}</td>
+                <td>{{users.email}}</td>
+                <td>{{users.address}}</td> 
+                <td> 
+                    <button pButton (click)="addRowData(users)" pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-text"></button>
+                </td> 
+            </tr>
+        </ng-template>
+    </p-table>
 
 </p-card>

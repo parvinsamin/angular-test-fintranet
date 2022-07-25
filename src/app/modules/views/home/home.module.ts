@@ -9,6 +9,8 @@ import { FormComponent } from './components/form/form.component';
 import { TableComponent } from './components/table/table.component';
 import { SummaryComponent } from './components/summary/summary.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostReducer, SrcReducer, TableRowReducer } from 'src/app/core/state/app.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule, 
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    // StoreModule.forRoot({ posts: PostReducer, src: SrcReducer, person: TableRowReducer })
   ],
   providers: [],
-  // bootstrap: [HomeComponent]
+  bootstrap: [HomeComponent]
 })
 export class HomeModule { }

@@ -7,20 +7,20 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './counter.reducer';
-import { PostReducer } from './core/state/post.reducer';
- 
+import { PostReducer, SrcReducer, TableRowReducer } from './core/state/app.reducer';
+
 @NgModule({
   declarations: [
-    AppComponent 
+    AppComponent
   ],
   imports: [
-    BrowserModule,  
+    BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
     AppRoutingModule,
-    StoreModule.forRoot({ posts: PostReducer,counter:counterReducer }) 
+    StoreModule.forRoot({ posts: PostReducer, src: SrcReducer, person: TableRowReducer })
   ],
-    exports: [
+  exports: [
     BrowserAnimationsModule,
     // NgxLoadingModule
   ],

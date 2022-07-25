@@ -5,8 +5,8 @@ import { MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/core/models/post.model';
 import { ChangeTabService } from 'src/app/core/services/change-tab.service';
-import { addPost, addSrc } from 'src/app/core/state/posts.actions';
-import { PostState } from 'src/app/core/state/posts.state';
+import { addPost, addSrc } from 'src/app/core/state/app.actions';
+import { PostState, SrcState } from 'src/app/core/state/app.state';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -20,7 +20,7 @@ export class FileUploadComponent implements OnInit {
     private http: HttpClient,
     private changeTabService: ChangeTabService,
     private messageService: MessageService,
-    private store: Store<PostState>) {  
+    private store: Store<SrcState>) {  
   }
 
   public ngOnInit() {

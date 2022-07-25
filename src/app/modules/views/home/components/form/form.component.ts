@@ -4,8 +4,8 @@ import { Validators, FormControl, FormGroup, FormBuilder, ValidationErrors } fro
 import { select, Store } from '@ngrx/store';
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-import { addPost } from 'src/app/core/state/posts.actions';
-import { PostState } from 'src/app/core/state/posts.state';
+import { addPost } from 'src/app/core/state/app.actions';
+import { PostState } from 'src/app/core/state/app.state';
 
 @Component({
   selector: 'app-form',
