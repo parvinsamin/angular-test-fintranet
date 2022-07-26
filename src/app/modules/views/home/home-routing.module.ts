@@ -14,11 +14,11 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    children: [
+    children: [ 
       {
         path: '',
         component: FileUploadComponent
-      }, 
+      },
       {
         path: 'step1',
         component: FileUploadComponent

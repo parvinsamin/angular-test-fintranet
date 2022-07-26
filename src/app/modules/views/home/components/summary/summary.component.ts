@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PersonState, PostState, SrcState } from 'src/app/core/state/app.state';
+import { PostState } from 'src/app/core/state/app.state';
 
 @Component({
   selector: 'app-summary',
@@ -8,28 +8,24 @@ import { PersonState, PostState, SrcState } from 'src/app/core/state/app.state';
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
-
+  images: any;
+  formData: any;
+  persons: any = [];
   constructor(
-    private store: Store<PostState>,
-    private store1: Store<SrcState>,
-    private store2: Store<PersonState>
+    private store: Store<PostState>
   ) { }
   storeData: any;
   ngOnInit(): void {
     this.store.select('posts').subscribe(
-      developers => console.log(developers)
+      results => {  
+        this.formData =  results.posts.post
+        this.images =  results.src.src ;
+        this.persons  =  results.person.persons ;
+      } 
+
     );
 
-    this.store1.select('src').subscribe(res => {
-      console.log('src store data:   ', res);
-      this.storeData = res;
-    });
 
-    this.store2.select('person').subscribe(res => {
-      console.log('person store data:   ', res);
-      this.storeData = res;
-    })
-    
   }
 
 }

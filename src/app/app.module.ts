@@ -1,13 +1,11 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PostReducer } from './core/state/app.reducer';
 import { SharedModule } from './shared/shared.module';
-import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './counter.reducer';
-import { PostReducer, SrcReducer, TableRowReducer } from './core/state/app.reducer';
 
 @NgModule({
   declarations: [
@@ -18,7 +16,7 @@ import { PostReducer, SrcReducer, TableRowReducer } from './core/state/app.reduc
     BrowserAnimationsModule,
     SharedModule,
     AppRoutingModule,
-    StoreModule.forRoot({ posts: PostReducer, src: SrcReducer, person: TableRowReducer })
+    StoreModule.forRoot({ posts: PostReducer })
   ],
   exports: [
     BrowserAnimationsModule,

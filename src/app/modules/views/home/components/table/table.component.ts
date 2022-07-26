@@ -1,11 +1,10 @@
-import { Component, OnInit } from "@angular/core";  
-import { Subscription } from "rxjs";
-import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
-import { TableRowDragService } from "src/app/core/services/table-row-drag.service";
-import { Person } from "src/app/core/services/persons";
-import { PersonState, PostState } from "src/app/core/state/app.state";
+import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
+import { Subscription } from "rxjs";
+import { Person } from "src/app/core/services/persons";
+import { TableRowDragService } from "src/app/core/services/table-row-drag.service";
 import { addRow } from "src/app/core/state/app.actions";
+import { PostState } from "src/app/core/state/app.state";
 
 @Component({
   selector: 'app-table',
@@ -17,7 +16,7 @@ export class TableComponent implements OnInit {
   busyGetUser: Subscription;
   users: Person[];
 
-  constructor(private _userApi: TableRowDragService,private store: Store<PersonState>) { }
+  constructor(private _userApi: TableRowDragService,private store: Store<PostState>) { }
 
   ngOnInit(): void {
     this.getUsers();

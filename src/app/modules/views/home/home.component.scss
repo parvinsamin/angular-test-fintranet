@@ -1,16 +1,20 @@
-.h3 {
-    color:   #254fb3  !important
-}
-.h3::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #254fb3;
-    transition: width .3s;
+:host ::ng-deep .tabview-custom {
+
+    i,
+    span {
+        vertical-align: middle;
+    }
+
+    span {
+        margin: 0 .5rem;
+    }
 }
 
-.h3:hover::after {
-    width: 21%;
-    //transition: width .3s;
+:host ::ng-deep .p-button {
+    margin-right: .25rem;
+}
+
+:host ::ng-deep .p-tabview p {
+    line-height: 1.5;
+    margin: 0;
 }

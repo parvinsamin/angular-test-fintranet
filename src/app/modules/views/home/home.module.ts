@@ -2,15 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+import { HttpClientModule } from '@angular/common/http';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { FormComponent } from './components/form/form.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { TableComponent } from './components/table/table.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { FormComponent } from './components/form/form.component';
-import { TableComponent } from './components/table/table.component';
-import { SummaryComponent } from './components/summary/summary.component';
-import { HttpClientModule } from '@angular/common/http';
-import { PostReducer, SrcReducer, TableRowReducer } from 'src/app/core/state/app.reducer';
-import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -25,6 +23,7 @@ import { StoreModule } from '@ngrx/store';
     HttpClientModule, 
     HomeRoutingModule,
     SharedModule,
+    
     // StoreModule.forRoot({ posts: PostReducer, src: SrcReducer, person: TableRowReducer })
   ],
   providers: [],

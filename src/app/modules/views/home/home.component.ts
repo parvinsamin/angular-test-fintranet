@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -8,33 +8,61 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  items: MenuItem[];  
+  items: any;
   activeItem: MenuItem;
-  locationId:any;
-  constructor(public activatedRoute:ActivatedRoute) { }
+  locationId: any;
+  selected: number = 0;
+  constructor(
+    public activatedRoute: ActivatedRoute,
+    private router: Router,
+  ) { }
 
-  ngOnInit() { 
-    this.items = [
-      { label: 'Step 1', icon: 'fa fa-fw fa-bar-chart', url: 'step1?id=0', },
-      { label: 'Step 2', icon: 'fa fa-fw fa-calendar' , url: 'step2?id=1' },
-      { label: 'Step 3', icon: 'fa fa-fw fa-book', url: 'step3?id=2'  },
-      { label: 'Step 4', icon: 'fa fa-fw fa-support', url: 'step4?id=3'  }, 
-    ]; 
+  ngOnInit() {
+    this.items = [{
+      id: 1,
+      header: 'Step 1',
+      icon: 'fa fa-fw fa-file',
+      routerLink: '/step1',
+      routerLinkActiveOptions: '{ exact: true }'
+    }, {
+      id: 2,
+      header: 'Step 2',
+      routerLink: '/step1',
+      routerLinkActiveOptions: '{ exact: true }'
+    }, {
+      id: 3,
+      header: 'Step 3',
+      routerLink: '/step3',
+      routerLinkActiveOptions: '{ exact: true }'
+    }, {
+      id: 4,
+      header: 'Step 4',
+      routerLink: '/step4',
+      routerLinkActiveOptions: '{ exact: true }'
+    }
+    ];
+
     this.activeItem = this.items[0];
-    this.activatedRoute.queryParams.subscribe(params => {
-      let id = params['id'];
-      this.activeItem = this.items[id]; 
-   });
-    console.log(this.locationId)
+    // this.activatedRoute.queryParams.subscribe(params => {
+    //   let id = params['id'];
+    //   console.log('Id ', id)
+    //   this.selected = this.items[id];
+    // }); 
+    console.log('event', location.host)
+
+  }
+
+  setActiveTab(event:any) {  
+    let index = event.index;
+    const t = index +1
+    const domain = 'step'+t;
+    console.log(domain)
+  //  this.router.navigate([domain], { queryParamsHandling: 'merge' });
+  }
+  tabIndex = 0;
+  activeTab = 0;
   
-
- 
+  switchHeaders(tabNumber: any) {
+    this.activeTab = tabNumber.index;
   }
-
-  setActiveTab(event: any) {
-    console.log(event)
-    debugger
-    this.activeItem = this.items[event];
-  }
-
 }

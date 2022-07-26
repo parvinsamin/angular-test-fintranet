@@ -1,17 +1,37 @@
 <div class="ui-g">
     <div class="ui-g-12">
         <div class="ui-g-2"></div>
-        <div class="ui-g-4"><h3 class="h3">Parvin Khoshnavaz Angular Test</h3></div>
+        <div class="ui-g-4">
+            <h3 class="h3">Parvin Khoshnavaz Angular Test</h3>
+        </div>
     </div>
-    <p-card>
-        <p-header>
-            <p-tabMenu [model]="items"    [activeItem]="activeItem" (activateTab)="setActiveTab($event)">
-            </p-tabMenu>
-        </p-header>
-        
-        <router-outlet></router-outlet>
+    <p-card> 
+        <p-tabView>
+            <p-tabView>
+                <p-tabPanel header="Step 1" leftIcon="pi pi-image">       
+                    <file-upload></file-upload>
+                </p-tabPanel>
+                <p-tabPanel header="Step 2" leftIcon="pi pi-user">
+                    <app-form></app-form>
+                </p-tabPanel>
+                <p-tabPanel header="Step 3" leftIcon="pi pi-table">
+                    <app-table></app-table>
+                </p-tabPanel>
+                <p-tabPanel header="Step 4" leftIcon="pi pi-key">
+                    <app-summary></app-summary>
+                </p-tabPanel>
+            </p-tabView>
+            <!-- <p-tabView (onChange)="setActiveTab($event)" 
+            [(activeIndex)]="selected">
+                <p-tabPanel [header]="item.header"  *ngFor="let item of items; let i = index" 
+                (click)="setActiveTab(i)">
+                    <router-outlet></router-outlet> {{item.header}}
+                </p-tabPanel>
+                
+            </p-tabView> -->
+        </p-tabView>  
         <p-footer>
-            Footer content here
+            
         </p-footer>
     </p-card>
 </div>

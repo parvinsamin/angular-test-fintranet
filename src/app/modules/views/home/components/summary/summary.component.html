@@ -1,1 +1,66 @@
-<p-avatar image="user.png" pBadge value="4" severity="danger" size="xlarge"></p-avatar>
+<p-card>
+    <ng-template pTemplate="header">
+        <h5>Results</h5>
+        <p-avatar [image]="images" pBadge value="5" severity="danger" size="xlarge"></p-avatar>
+    </ng-template>
+    <ng-template pTemplate="content">
+
+        <p-divider align="right" type="dashed" >
+            <b>Form:</b>
+        </p-divider>
+
+        <div class="p-fluid grid">
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <span for="inputtext">Amount </span>
+                    <label class="field col-4 md:col-4" for="inputtext">{{formData?.amount}}</label>
+                </span>
+            </div>
+
+        </div>
+        <div class="p-fluid grid">
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <span for="inputtext">Date </span>
+                    <label for="inputtext">{{formData?.startDate}}</label>
+                </span>
+            </div>
+
+        </div>
+        <div class="p-fluid grid">
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <span for="inputtext">Status </span>
+                    <label for="inputtext">{{formData?.statuses?.label}}</label>
+                </span>
+            </div>
+
+        </div>
+        <div class="p-fluid grid">
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <span for="inputtext">Fund Source </span>
+                    <label for="inputtext">{{formData?.['fund-src']}}</label>
+                </span>
+            </div>
+
+        </div>
+
+        <p-divider align="right" type="dashed"  >
+            <b>Table:</b>
+        </p-divider> 
+   
+        <div class="p-grid">
+            <div class="p-col-12 p-md-6 p-lg-3 p-flex-sm-nowrap">Code  : {{persons?.order}}</div>
+            
+            <div class="p-col-12 p-md-6 p-lg-3">FirstName  : {{persons?.first}}</div>
+            <div class="p-col-12 p-md-6 p-lg-3">LastName  : {{persons?.last}}</div>
+            <div class="p-col-12 p-md-6 p-lg-3">Email  : {{persons?.email}}</div>
+            <div class="p-col-12 p-md-6 p-lg-3">Address  : {{persons?.address}}</div> 
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        Footer content here
+    </ng-template>
+</p-card>

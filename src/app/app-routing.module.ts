@@ -6,11 +6,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./modules/views/home/home.module').then((m) => m.HomeModule),
-    // resolve: {
-    //   country: GetCountryResolver
-    // },
-  },
-  
+    
+  }, 
   {
     path: '**',
     redirectTo: 'home',
